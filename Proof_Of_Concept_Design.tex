@@ -1,0 +1,220 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{xcolor}
+\usepackage{graphicx}
+
+\title{\textbf{Proof Of Concept Design}}
+\author{Emily Hunt}
+\date{September 2019}
+
+\begin{document}
+
+\maketitle
+
+\section{Scoping and Elaboration Summary}
+The tools I identified as being viable to use for my Proof of Concept during Elaboration testing include ClipNotes (an app that allows you to write notes on a film in an XML file, import them into the app and when a note is selected, the app plays the specific section of the film the note refers to) and ScriptThreads (software that allows you to open a film script, and it will analyse and provide a graphical representation of the character interactions and scenes, also allowing you to export this data in csv format).\\
+What I am proposing is the creation of a dataset (e.g. in excel) that contains the information of a script (Scene number, scene location information, lines, character that says the line, timestamp of the beginning and end of the scene). From this data set, you will be able to export a script in a standard format and notes in the format required by ClipNotes that designate each individual scene and have the lines in that scene included in the note (this means to do this needs to be determined). The script that can be loaded in ScriptThreads and ClipNotes. ScriptThreads has a bar that shows you which scene a point in the graph it creates refers to. Therefore when I want to see a point in the graph I find interesting, I can use my notes in ClipNotes to find that scene and watch it as it appears in the film.\\
+Part of my Proof of Concept will include the creation of the dataset but I still need to go to consultation hours and determine how this will be created (i.e. are there any tools that will assist me). So, for this exercise of creating the User Stories, I have started with the assumption that the dataset has been manually created.
+
+
+\section{Creating the User Stories}
+\subsection{The User Stories}
+\begin{enumerate}
+    \item As a student I want to have a dataset of all the scenes (and relevant info including number, description, location etc.) so that I can export this into formats appropriate for the two tools I have identified.
+    \item As a student I want to export film/script data from an Excel file into a standard script format so that I can open it in Script Threads.
+    \item As a student I want open a file in ScriptThreads and have it automatically identify the different characters so that it can produce a graph of their interactions.
+    \item As a student I want open a file in ScriptThreads and have it automatically identify the scene so that it can produce a graph of their flow.
+    \item As a student I want open a file in ScriptThreads and have it automatically produce a graph of all the character's interactions.
+    \item As a student I want to be able to have a list of all the characters in a film so that I can enter them into ScriptThreads if they aren't automatically identified.
+    \item As a student I want be able know which part of the script a section of the ScriptThreads graph is referring to so that I can refer to that part of the actual film.
+    \item As a student I want to export the character data from ScriptThreads so that I can see the number of times a character is mentioned (simpler than analysing the original dataset).
+    \item As a student I want to export the scene data from ScriptThreads so that I can see the basic scene information of the film (simpler than analysing the original dataset).
+    \item As a student I want to switch between the various graphical representations offered by ScriptThreads so that I can consider the breakdown of the film in different ways.
+    \item As a student I want to have the characters name appear on the graph so that I can know which colour refers to which character without having to consult the key.
+    \item As a student I want to be able to Save the graph produced by ScriptThreads in an image format so that I can have it for future reference.
+    \item As a student I want to export film/script scene data from an Excel file into a the format for notes required by ClipNotes so that I can open it in the application.
+    \item As a student I want each ClipNotes note to include the lines spoken in that scene so that I can know the structure of the scene and provide me a reference point for where the lines occur in relation to each other.
+    \item As a student I want to be able to select a ClipNotes notes caption (a scene number and description) and have the app play that scene so that I can easily find scenes of interest I identify in ScriptThreads.
+\end{enumerate}
+
+\subsection{Acceptance Criteria}
+\subsubsection{Have a Dataset With all the Scenes and Lines in a Film}
+As a student, I should be able to:
+\begin{enumerate}
+    \item Open the dataset file
+    \item See the the number, location (INT/EXT), location description, time of day (DAY/NIGHT) and beginning and ending timestamp of each scene, as well as each line and the character that says it.
+    \item Have no empty cells
+    \item Ensure all the data is in the correct format by applying appropriate data validation rules e.g. INT/EXT, DAY/NIGHT, creating a drop down list for the character names.
+\end{enumerate}
+
+\subsubsection{Export Film/Script Data from an Excel File into a Standard Script Format}
+As a student, I should be able to:
+\begin{enumerate}
+    \item Open the dataset file
+    \item Export the data into a new file (means to do this still needs to be determined, potentially through the Unix Shell?)
+    \item Open the new html file and have the first line be 1. INT/EXT - LOCATION NAME (DAY/NIGHT). Following this should be the name of the first character that speaks in capitals, and each their dialogue on new lines after their name, repeating for each character that speaks. This pattern should be repeated for all the scenes in the film.
+\end{enumerate}
+
+\subsubsection{Open a File in ScriptThreads and Have it Automatically Identify the Different Characters}
+As a student, I should be able to:
+\begin{enumerate}
+    \item Open the ScriptThreads application.
+    \item Go to File, Open File and then navigate to my script html file and select Open.
+    \item Have the file be Parsed and when this is complete have each character name highlighted in a unique colour within the script which appears in the lefthand panel in the app, and have each character name appear in the right character panel highlighted in their appropriate colour. They should appear in the order of most freuqently appearing to least.
+\end{enumerate}
+
+\subsubsection{Open a File in ScriptThreads and Have it Automatically Identify the Different Scenes}
+As a student, I should be able to:
+\begin{enumerate}
+    \item Open the ScriptThreads application.
+    \item Go to File, Open File and then navigate to my script html file and select Open.
+    \item Have the file be Parsed and when this is complete have each scene title highlighted and underlined in dark purple within the script which appears in the lefthand panel in the app. Every second scene should also have gray background. These scenes should be represented in the background of the graph in the centre of the app with the lighter grey block.
+\end{enumerate}
+
+\subsubsection{Open a File in ScriptThreads and Have it Automatically Produce a Graph of the Character Interactions}
+As a student, I should be able to:
+\begin{enumerate}
+    \item Open the ScriptThreads application.
+    \item Go to File, Open File and then navigate to my script html file and select Open.
+    \item Have the file be Parsed and when this is complete, a graph with various lines in the colour of each character should appear in the centre of the app. The deafult type of graph which should appear is a Force Directed graph.
+\end{enumerate}
+
+\subsubsection{Have a List of all the Characters in a Film and Enter These into ScriptThreads}
+As a student, I should be able to:
+\begin{enumerate}
+    \item Get a list of each of the character names in the film from the drop down menu in the Excel file
+    \item OR use the Unix Shell to get each unique character name by using the unix command in a pipe (see Activity: Pipe Construction in Unix Shell for how to do this.
+    \item Go to Characters, Force Characters in ScriptThreads and enter each of these names with a unique colour and select OK.
+    \item Go to Options, Parsing, deselect Find Characters in Text and then go to Reparse.
+    \item See the characters highlighted in the script in the colour I selected, appear in the Characters panel also highlighted in their colour and also appear in the graph.
+\end{enumerate}
+
+\subsubsection{Know which Part of the Script a Section of the ScriptThreads Graph is Referring To}
+As a student, I should be able to:
+\begin{enumerate}
+    \item After opening a Script and having the Characters and Scenes be identified, go to Advanced (in the right hand panel) and select Draw Grid.
+    \item Scroll through the script in the left hand panel, and as I do so, I horizontal line should move through the graph indicating where I am in the script.
+\end{enumerate}
+
+\subsubsection{Export the Character Data from ScriptThreads}
+As a student, I should be able to:
+\begin{enumerate}
+    \item After opening a Script and having the Characters and Scenes be identified, go to Advanced (in the right hand panel) and click the Character Stats button.
+    \item Choose the location I would like to save the stats file, name it appropriately and click Save.
+    \item Go to the location I have saved the file and open it, and see a table with each character name and see their key statistics from the script such as the number of scenes they appear in and number of lines they have.
+\end{enumerate}
+
+\subsubsection{Export the Scene Data from ScriptThreads}
+As a student, I should be able to:
+\begin{enumerate}
+    \item After opening a Script and having the Characters and Scenes be identified, go to Advanced (in the right hand panel) and click the Scene Stats button.
+    \item Choose the location I would like to save the stats file, name it appropriately and click Save.
+    \item Go to the location I have saved the file and open it, and see a table with each scene number and see its key statistics from the script such as the type of scene, number of characters in it, the name of the characters that appear in it and number of lines.
+\end{enumerate}
+
+\subsubsection{Switch Between the Various Graphical Representations Offered by ScriptThreads}
+As a student, I should be able to:
+\begin{enumerate}
+    \item After opening a Script and having the Characters and Scenes be identified, go to the drop down menu in the right panel and select either Force Directed, Colour Weaving, Convergence Graph or Increasing Graph.
+    \item Select an option from this drop down menu and have the graph in the middle of the screen representing the character's activities in the script change to reflect the choice.
+    \item Spin the 3D graphs (Force Directed and Convergence) by clicking somewhere in the graph window and moving the mouse left or right while holding down the click.
+\end{enumerate}
+
+\subsubsection{Have the Characters Name Appear on the Graph}
+As a student, I should be able to:
+\begin{enumerate}
+    \item After opening a Script and having the Characters and Scenes be identified, go to Advanced (in the right hand panel) and select Draw Names.
+    \item Now see the name of each character in their unique colour on the 3D graphs (Force Directed and Convergence) somewhere near their corresponding line.
+\end{enumerate}
+
+\subsubsection{Save the Graph Produced by ScriptThreads in an Image Format}
+As a student, I should be able to:
+\begin{enumerate}
+    \item After opening a Script and having the Characters and Scenes be identified, go to Advanced (in the right hand panel) and click the Save Image button.
+    \item Choose the location I would like to save file, name it appropriately, choose from the Files of type drop down menu either PNG or JPEG and click Save.
+    \item Go to the location I have saved the file in the format I have selected and open it. The image of the graph should appear exactly as it appeared within the app at the time I clicked Save Image (including the grid line if I have it selected).
+\end{enumerate}
+
+\subsubsection{Export Film/Script Scene Data from an Excel File into the Format for Notes Required by ClipNotes}
+As a student, I should be able to:
+\begin{enumerate}
+    \item Open the dataset file
+    \item Export the data into a new file (means to do this still needs to be determined, potentially through the Unix Shell?)
+    \item Open the new XML file and have their be an individual note for each scene in this format\\
+    \textcolor{blue}{\textless Clips\textgreater}\\
+    \textcolor{blue}{\textless Clip\textgreater}\\
+    \textcolor{blue}{\textless Start\textgreater} Start of Scene Timestamp \textcolor{blue}{\textless /Start\textgreater}\\
+    \textcolor{blue}{\textless End\textgreater} End of Scene Timestamp \textcolor{blue}{\textless /End\textgreater}\\
+    \textcolor{blue}{\textless Description\textgreater} All the lines in the scene. \textcolor{blue}{\textless/Description\textgreater}\\
+    \textcolor{blue}{\textless Caption\textgreater} Scene Number and Description. \textcolor{blue}{\textless /Caption\textgreater}\\
+    \textcolor{blue}{\textless /Clip\textgreater}\\
+    \textcolor{blue}{\textless /Clips\textgreater}\\
+\end{enumerate}
+
+\subsubsection{Each ClipNotes Note to Include the Lines Spoken in that Scene}
+As a student, I should be able to:
+\begin{enumerate}
+    \item Click on a note caption in the ClipNotes app (which includes the scene number and description).
+    \item Have that note appear with it containing all the lines spoken in that scene while the scene itself plays in the viewing window.
+\end{enumerate}
+
+\subsubsection{Select a Notes Caption (a scene number and description) and Have the ClipNotes App Play that Scene}
+As a student, I should be able to:
+\begin{enumerate}
+    \item Click on a note caption in the ClipNotes app (which includes the scene number and description).
+    \item Have the \textit{correct} scene play in the viewing window, which can be checked against the lines that appear in the note.
+\end{enumerate}
+
+\section{Categorising User Stories into Themes and Identifying Prerequisites}
+
+\subsection{Themes}
+Each of the outlined user stories falls into three broad themes
+\begin{enumerate}
+    \item Those related to creating and using the central database (user stories 1-2)
+    \item Those related to opening and analysing files in ScriptThreads, and exporting and saving data from the application (user stories 3-12)
+    \item Those related to opening and viewing notes and the film in ClipNotes (user stories 13-15)
+\end{enumerate}
+
+\subsection{Stories Which Depend on Others}
+There are a number of stories that depend on other ones. These include:
+\begin{itemize}
+    \item All of the stories depend on story 1 (having the database for the film)
+    \item Stories 3-12 depend on story 2 (being able to export the data from the database into a standard script format for ScriptThreads)
+    \item Stories 7-12 depend on stories 3-6 (ScriptThreads needs to successfully identify and interpret characters and scenes before this data can be read and exported)
+    \item Stories 14 and 15 depend on story 13 (being able to export the data from the database into a format appropriate for ClipNotes)
+\end{itemize}
+
+\subsection{Duplicate Stories}
+Two stories I can identify which are duplicates are numbers 14 and 15. They could could be merged into a single story that says 'As a student I want to select a ClipNotes notes caption and have the app play the appropriate section of the film and have the note containing the correct lines from the script appear.\\
+
+Additionally, steps 8 and 9 are very similar as they both involve the exporting of data from ScriptThreads though I think are different enough to be warranted separate stories..
+
+
+
+
+\subsection{Stories Which Must v Might Be Completed}
+
+\textbf{Stories Which Must Be Completed}
+\begin{itemize}
+    \item 1. As a student I want to have a dataset of all the scenes (and relevant info including number, description, location etc.) so that I can export this into formats appropriate for the two tools I have identified.
+    \item 2. As a student I want to export film/script data from an Excel file into a standard script format so that I can open it in Script Threads.
+    \item 3. As a student I want open a file in ScriptThreads and have it automatically identify the different characters so that it can produce a graph of their interactions.
+    \item 4. As a student I want open a file in ScriptThreads and have it automatically identify the scene so that it can produce a graph of their flow.
+    \item 5. As a student I want open a file in ScriptThreads and have it automatically produce a graph of all the character’s interactions.
+    \item 6. As a student I want to be able to have a list of all the characters in a film so that I can enter them into ScriptThreads if they aren’t automatically identified.
+    \item 7. As a student I want be able know which part of the script a section of the ScriptThreads graph is referring to so that I can refer to that part of the actual film.
+    \item 13. As a student I want to export film/script scene data from an Excel file into a the format for notes required by ClipNotes so that I can open it in the application.
+    \item 14. As a student I want each ClipNotes note to include the lines spoken in that scene so that I can know the structure of the scene and provide me a reference point for where the lines occur in relation to each other.
+    \item 15. As a student I want to be able to select a ClipNotes notes caption (a scene number and description) and have the app play that scene so that I can easily find scenes of interest I identify in ScriptThreads.
+\end{itemize}
+
+\textbf{Stories Which Might Be Completed}
+\begin{itemize}
+    \item 8. As a student I want to export the character data from ScriptThreads so that I can see the number of times a character is mentioned (simpler than analysing the original dataset).
+    \item 9. As a student I want to export the scene data from ScriptThreads so that I can see the basic scene information of the film (simpler than analysing the original dataset).
+    \item 10. As a student I want to switch between the various graphical representa- tions offered by ScriptThreads so that I can consider the breakdown of the film in different ways.
+    \item 11. As a student I want to have the characters name appear on the graph so that I can know which colour refers to which character without having to consult the key.
+    \item 12. As a student I want to be able to Save the graph produced by Script- Threads in an image format so that I can have it for future reference.
+\end{itemize}
+
+\end{document}
